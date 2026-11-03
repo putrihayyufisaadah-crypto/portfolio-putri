@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Personal Portfolio - Putri Hayyufi Sa'adah
 ### Tema Desain: Dusty Pink Luxury
 
@@ -97,3 +98,7 @@ Anda dapat langsung mengganti:
   ```bash
   npm run build
   ```
+=======
+# portfolio-putri
+Personal Portfolio Putri Hayyufi Sa'adah - Mahasiswa Bisnis Digital Universitas Lancang
+>>>>>>> 0a1ec126eaee75f7302f8431d4b4cfb7f4c6955c
