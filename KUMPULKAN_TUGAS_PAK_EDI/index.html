@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Putri Hayyufi Sa'adah | Digital Business Portfolio</title>
+  <meta name="description" content="Portfolio Pribadi Putri Hayyufi Sa'adah - Mahasiswa Bisnis Digital Universitas Lancang Kuning & Penerima Beasiswa ADik. Spesialisasi Digital Marketing, Social Media Management, Content Creation, dan Desain Grafis." />
+  <meta name="author" content="Putri Hayyufi Sa'adah" />
+  <meta name="theme-color" content="#D8A7AD" />
+
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='30' fill='%23D8A7AD'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-family='serif' font-size='50' font-weight='bold' fill='%23FFF9F8'>P</text></svg>" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dusty: {
+              50: '#FDF8F8',
+              100: '#F6E8E8', // Blush Pink
+              200: '#EBCBD0', // Soft Pink
+              300: '#D8A7AD', // Dusty Pink (Primary)
+              400: '#BC858E', // Muted Rose
+              500: '#A46F78',
+              600: '#8E5862',
+              700: '#79565D', // Rose Brown
+              800: '#5E3E44',
+              900: '#43292E',
+              950: '#2A171B',
+            },
+            cream: {
+              50: '#FFFFFF',
+              100: '#FFF9F8', // Cream White
+              200: '#FAF3F2',
+              300: '#F4ECEB',
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft-luxury': '0 10px 30px -5px rgba(216, 167, 173, 0.22), 0 4px 12px -2px rgba(121, 86, 93, 0.06)',
+            'luxury-hover': '0 20px 40px -10px rgba(216, 167, 173, 0.35), 0 8px 16px -4px rgba(121, 86, 93, 0.1)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles for Luxury Theme -->
+  <style>
+    body {
+      background-color: #FFF9F8;
+      color: #43292E;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .text-gradient-luxury {
+      background: linear-gradient(135deg, #79565D 0%, #BC858E 60%, #D8A7AD 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFF9F8;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D8A7AD;
+      border-radius: 9999px;
+      border: 2px solid #FFF9F8;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #BC858E;
+    }
+  </style>
+
+  <!-- React 18, ReactDOM & Babel Standalone (UMD) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-cream-100 text-dusty-950 font-sans antialiased selection:bg-dusty-200 selection:text-dusty-950">
+  
+  <div id="root"></div>
+
+  <!-- Main React Application Script -->
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // ==========================================
+    // DATA PORTOFOLIO RESMI PUTRI HAYYUFI SA'ADAH
+    // ==========================================
+    const personalInfo = {
+      name: "Putri Hayyufi Sa'adah",
+      title: "Digital Business Student",
+      status: "Mahasiswa Aktif",
+      major: "Bisnis Digital",
+      faculty: "Fakultas Ilmu Komputer",
+      university: "Universitas Lancang Kuning",
+      highSchool: "MA Baburohmah Meranti",
+      scholarship: "Penerima Beasiswa ADik Kemendikbudristek",
+      heroBio: "Halo! Saya Putri Hayyufi Sa'adah, mahasiswa aktif Program Studi Bisnis Digital di Universitas Lancang Kuning sekaligus Penerima Beasiswa ADik (Afirmasi Pendidikan Tinggi). Saya memiliki ketertarikan pada dunia digital marketing, pengelolaan media sosial, desain kreatif, dan pengembangan bisnis digital. Saya senang mempelajari hal baru, mengembangkan kreativitas, dan menciptakan ide yang bermanfaat di dunia digital.",
+      aboutDescription: [
+        "Saya adalah seorang mahasiswa aktif Program Studi Bisnis Digital di Fakultas Ilmu Komputer, Universitas Lancang Kuning, sekaligus alumni MA Baburohmah Meranti dan penerima Beasiswa Afirmasi Pendidikan Tinggi (ADik). Memiliki antusiasme yang tinggi dalam menggabungkan strategi bisnis modern dengan kekuatan media digital dan kreativitas visual.",
+        "Dalam perjalanan akademis dan eksplorasi profesional, saya fokus mendalami strategi digital marketing, optimalisasi media sosial, penciptaan konten visual yang menarik, serta analisis tren pasar digital untuk membantu perkembangan sebuah brand.",
+        "Bagi saya, setiap proyek adalah ruang untuk berinovasi, berkolaborasi, dan memberikan dampak nyata melalui pendekatan yang terstruktur, kreatif, dan berorientasi pada hasil."
+      ],
+      interests: [
+        "Digital Marketing",
+        "Social Media Management",
+        "Content Creation",
+        "Graphic Design",
+        "Digital Business"
+      ],
+      contact: {
+        whatsappNumber: "6282287887434",
+        whatsappDisplay: "0822-8788-7434",
+        whatsappLink: "https://wa.me/6282287887434?text=Halo%20Putri%20Hayyufi%20Sa'adah,%20saya%20tertarik%20untuk%20berdiskusi%20dan%20berkolaborasi",
+        instagramHandle: "@putrihayyufisadh",
+        instagramLink: "https://instagram.com/putrihayyufisadh",
+        emailAddress: "putrihayyufi.saadah@email.com",
+        location: "Pekanbaru, Riau, Indonesia"
+      },
+      avatarUrl: "putri.jpg",
+      aboutPhotoUrl: "putri.jpg"
+    };
+
+    const educationHistory = [
+      {
+        institution: "Universitas Lancang Kuning",
+        faculty: "Fakultas Ilmu Komputer",
+        major: "Program Studi Bisnis Digital",
+        status: "Mahasiswa Aktif",
+        period: "2023 - Sekarang",
+        description: "Menempuh studi sarjana Bisnis Digital sebagai Penerima Beasiswa ADik (Afirmasi Pendidikan Tinggi). Mempelajari integrasi teknologi digital dengan strategi bisnis, e-commerce, digital marketing, analisis data bisnis, dan inovasi startup digital.",
+        highlights: [
+          "Penerima Beasiswa ADik Kemendikbudristek RI",
+          "Fokus pada Digital Marketing & Social Media Strategy",
+          "Pengembangan Model Bisnis Digital & E-Commerce",
+          "Kreativitas Konten Digital & UI/UX Dasar"
+        ],
+        isActive: true
+      },
+      {
+        institution: "MA Baburohmah Meranti",
+        faculty: "Madrasah Aliyah",
+        major: "MA Baburohmah Meranti",
+        status: "Alumni / Lulus",
+        period: "Lulus",
+        description: "Menyelesaikan pendidikan tingkat menengah atas di MA Baburohmah Meranti, Kepulauan Meranti, Riau. Membangun fondasi akademik, nilai kedisiplinan dan kepemimpinan, serta minat awal dalam komunikasi kreatif dan teknologi digital.",
+        highlights: [
+          "Alumni MA Baburohmah Meranti (Kepulauan Meranti)",
+          "Aktif dalam kegiatan akademik dan keorganisasian madrasah",
+          "Meraih kesempatan Beasiswa ADik untuk melanjutkan ke perguruan tinggi"
+        ],
+        isActive: false
+      }
+    ];
+
+    const skillsData = [
+      { name: "Social Media Management", category: "Marketing & Strategy", percentage: 85, level: "Intermediate - Advanced", description: "Perencanaan feed, content calendar, analisis insight performa akun, dan strategi engagement audiens.", tools: ["Meta Suite", "Instagram Insights", "TikTok Analytics", "Notion"] },
+      { name: "Content Creation", category: "Creative Production", percentage: 90, level: "Advanced", description: "Pembuatan konsep konten kreatif, copywriting persuasif, storytelling visual, dan produksi konten berkala.", tools: ["Canva Pro", "CapCut", "Copywriting", "Storyboarding"] },
+      { name: "Graphic Design", category: "Visual Design", percentage: 88, level: "Advanced", description: "Perancangan identitas visual, poster promosi, template feed, banner promosi, dan materi promosi digital.", tools: ["Canva", "Photoshop Dasar", "Figma"] },
+      { name: "Video Editing", category: "Multimedia", percentage: 82, level: "Intermediate", description: "Editing video pendek untuk Reels/TikTok, transisi dinamis, penyesuaian audio, subtitle, dan grading warna.", tools: ["CapCut", "Premiere Dasar", "InShot"] },
+      { name: "Digital Marketing", category: "Business Strategy", percentage: 80, level: "Intermediate", description: "Pemahaman dasar funnel marketing, digital ads campaign, riset pasar online, dan analisis perilaku konsumen.", tools: ["Google Trends", "Meta Ads", "SEO Dasar"] },
+      { name: "UI/UX Design", category: "Product & Digital", percentage: 75, level: "Intermediate", description: "Perancangan antarmuka pengguna dasar, wireframing, prototipe aplikasi & landing page berbasis pengalaman pengguna.", tools: ["Figma", "Design System", "User Flow"] },
+      { name: "Microsoft Office", category: "Productivity", percentage: 92, level: "Advanced", description: "Penyusunan dokumen formal, pengolahan data spreadsheet rumus Excel, dan pembuatan presentasi profesional.", tools: ["Word", "Excel (VLOOKUP, Pivot)", "PowerPoint"] },
+      { name: "Creative Thinking", category: "Soft Skills", percentage: 95, level: "Expert", description: "Kemampuan memecahkan masalah dengan ide kreatif, brainstorming konsep kampanye segar, dan adaptasi tren baru.", tools: ["Brainstorming", "Mind Mapping", "Trend Spotting"] }
+    ];
+
+    const experienceData = [
+      {
+        role: "Anggota Tim Agency / Creative Agency Member",
+        organization: "Creative Digital Agency",
+        type: "Agency Experience",
+        period: "2024 - Sekarang",
+        description: "Berperan aktif dalam tim agency kreatif untuk merumuskan ide konsep branding, perancangan materi kampanye digital, dan berkolaborasi dengan tim lintas disiplin.",
+        responsibilities: [
+          "Mengikuti proses brainstorming konsep kampanye bersama tim agency",
+          "Membantu menyusun rancangan visual dan strategi peluncuran produk digital",
+          "Melakukan riset tren visual dan referensi desain untuk klien agency"
+        ],
+        tools: ["Canva Pro", "Trello", "Google Drive"]
+      },
+      {
+        role: "Pengelola Media Sosial / Social Media Specialist",
+        organization: "Akun Komunitas & Bisnis Digital",
+        type: "Social Media Management",
+        period: "2023 - 2024",
+        description: "Bertanggung jawab atas pengelolaan operasional harian akun media sosial, penjadwalan konten, interaksi dengan audiens, dan pemantauan performa keterlibatan.",
+        responsibilities: [
+          "Menyusun jadwal tayang (content calendar) mingguan dan bulanan",
+          "Mengelola postingan feed, story, dan reels secara konsisten",
+          "Meningkatkan engagement rate melalui respons interaktif dan polling"
+        ],
+        tools: ["Instagram", "Meta Suite", "CapCut", "Canva"]
+      },
+      {
+        role: "Digital Content Creator",
+        organization: "Proyek Kreatif Mahasiswa",
+        type: "Content Creation",
+        period: "2023 - Sekarang",
+        description: "Memproduksi berbagai jenis konten digital edukatif dan informatif yang disesuaikan dengan karakteristik audiens target dan tren media sosial.",
+        responsibilities: [
+          "Menulis naskah (copywriting) dan struktur alur konten yang engaging",
+          "Memproduksi foto dan video materi promosi dengan estetika rapi",
+          "Mengevaluasi insight konten untuk mengoptimalkan jangkauan organik"
+        ],
+        tools: ["CapCut", "Canva", "Smartphone Videography"]
+      },
+      {
+        role: "Content Designer & Editor",
+        organization: "Freelance & Kampus Project",
+        type: "Design & Editing",
+        period: "2023 - Sekarang",
+        description: "Melakukan proses editing dan desain grafis untuk berbagai kebutuhan promosi acara, poster digital, serta video visual pendukung.",
+        responsibilities: [
+          "Merancang aset grafis dengan palet warna dan tipografi konsisten",
+          "Mengedit potongan video pendek dengan transisi halus dan subtitle jelas",
+          "Memastikan setiap output visual memiliki kualitas estetika premium"
+        ],
+        tools: ["Canva", "CapCut", "Figma", "Photo Editor"]
+      }
+    ];
+
+    const projectsData = [
+      {
+        id: 1,
+        title: "Instagram Feed & Carousel Content Campaign",
+        category: "Social Media",
+        subtitle: "Desain Konten Media Sosial & Strategi Visual",
+        description: "Perancangan rangkaian feed Instagram dan konten microblog/carousel edukatif dengan gaya visual elegan dan konsisten untuk meningkatkan engagement audiens.",
+        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800",
+        tools: ["Canva Pro", "Instagram Insights", "Meta Suite"],
+        date: "2024",
+        client: "Portfolio Project"
+      },
+      {
+        id: 2,
+        title: "Poster Promosi Digital & Event Kampus",
+        category: "Graphic Design",
+        subtitle: "Desain Poster Promosi Kegiatan Digital",
+        description: "Desain poster promosi digital bertema seminar dan workshop bisnis teknologi dengan tipografi modern dan komposisi visual yang menarik perhatian.",
+        image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=800",
+        tools: ["Canva", "Figma", "Typography"],
+        date: "2024",
+        client: "Event Digital"
+      },
+      {
+        id: 3,
+        title: "Brand Presentation Kit & Social Templates",
+        category: "Canva Design",
+        subtitle: "Desain Canva Presentation & Social Kit",
+        description: "Koleksi template presentasi bisnis dan kit media sosial yang dirancang khusus menggunakan Canva untuk kebutuhan branding yang serasi dan profesional.",
+        image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800",
+        tools: ["Canva Pro", "Color Theory", "Slide Deck"],
+        date: "2024",
+        client: "Personal Brand"
+      },
+      {
+        id: 4,
+        title: "Instagram Reels Series: Digital Marketing Tips",
+        category: "Social Media",
+        subtitle: "Konten Instagram Reels & Story Engagement",
+        description: "Seri video pendek edukatif mengenai tips pemasaran digital dan bisnis mahasiswa, disajikan dengan hook visual memikat dan durasi di bawah 60 detik.",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800",
+        tools: ["CapCut", "Instagram Reels", "Audio Sync"],
+        date: "2024",
+        client: "Edukasi Digital"
+      },
+      {
+        id: 5,
+        title: "Short-Form Video Showcase & Promotional Reel",
+        category: "Video Editing",
+        subtitle: "Video Editing Promosi Produk & Personal Branding",
+        description: "Editing kompilasi video promosi estetik dengan ritme transisi cepat, color grading lembut bernuansa soft rose, serta penataan musik latar yang pas.",
+        image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800",
+        tools: ["CapCut Pro", "Color Grading", "Sound Design"],
+        date: "2024",
+        client: "Creative Showcase"
+      },
+      {
+        id: 6,
+        title: "Digital Business Model & E-Commerce Strategy",
+        category: "Digital Business",
+        subtitle: "Rancangan Model Bisnis Digital & Strategi E-Commerce",
+        description: "Studi kasus perencanaan model bisnis digital untuk UMKM lokal, meliputi Business Model Canvas (BMC), strategi omnichannel, dan roadmap pemasaran online.",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+        tools: ["Business Model Canvas", "Market Analysis", "Google Workspace"],
+        date: "2024",
+        client: "Proyek Bisnis Digital UNILAK"
+      }
+    ];
+
+    const achievementsData = [
+      {
+        id: 1,
+        title: "Penerima Beasiswa ADik (Afirmasi Pendidikan Tinggi)",
+        organizer: "Puslapdik Kemendikbudristek RI & Universitas Lancang Kuning",
+        year: "Aktif",
+        category: "Beasiswa Nasional Pemerintah",
+        badge: "Official Scholarship Awardee",
+        description: "Terpilih sebagai mahasiswa penerima Beasiswa Afirmasi Pendidikan Tinggi (ADik) dari Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia untuk menempuh program studi S1 Bisnis Digital di Universitas Lancang Kuning.",
+        highlights: [
+          "Penerima Beasiswa Afirmasi Perguruan Tinggi Nasional Kemendikbudristek RI",
+          "Studi Sarjana Bisnis Digital, Fakultas Ilmu Komputer, Universitas Lancang Kuning",
+          "Alumni MA Baburohmah Meranti, Riau"
+        ],
+        image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        id: 2,
+        title: "Prestasi Akademik & Keaktifan Mahasiswa Bisnis Digital",
+        organizer: "Program Studi Bisnis Digital, Universitas Lancang Kuning",
+        year: "2023 - Sekarang",
+        category: "Pencapaian Mahasiswa",
+        badge: "Academic Achievement",
+        description: "Menunjukkan dedikasi tinggi dalam menempuh perkuliahan pemasaran digital, inovasi e-commerce, dan keikutsertaan aktif dalam penugasan proyek kreatif.",
+        highlights: [
+          "Konsisten mempertahankan performa akademik di Program Studi Bisnis Digital",
+          "Aktif mengeksplorasi industri digital marketing dan social media branding"
+        ],
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800"
+      }
+    ];
+
+    const navLinks = [
+      { name: "Home", href: "#home" },
+      { name: "About Me", href: "#about" },
+      { name: "Education", href: "#education" },
+      { name: "Skills", href: "#skills" },
+      { name: "Experience", href: "#experience" },
+      { name: "Projects", href: "#projects" },
+      { name: "Achievements", href: "#certificates" },
+      { name: "Contact", href: "#contact" }
+    ];
+
+    // ==========================================
+    // SVG ICONS
+    // ==========================================
+    const InstagramIcon = ({ className = "w-4 h-4" }) => (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    );
+
+    const WhatsAppIcon = ({ className = "w-4 h-4" }) => (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+      </svg>
+    );
+
+    // ==========================================
+    // MAIN APP COMPONENT
+    // ==========================================
+    function App() {
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const [activeSection, setActiveSection] = useState('home');
+      const [selectedProject, setSelectedProject] = useState(null);
+      const [selectedAchievement, setSelectedAchievement] = useState(null);
+      const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+      const [activeCategory, setActiveCategory] = useState("Semua");
+      const [showBackToTop, setShowBackToTop] = useState(false);
+
+      // Contact Form State
+      const [contactForm, setContactForm] = useState({ name: '', email: '', subject: '', message: '' });
+      const [formSubmitted, setFormSubmitted] = useState(false);
+
+      useEffect(() => {
+        const handleScroll = () => {
+          setShowBackToTop(window.scrollY > 300);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
+      const filteredProjects = activeCategory === "Semua" 
+        ? projectsData 
+        : projectsData.filter(p => p.category === activeCategory);
+
+      const handleFormSubmit = (e) => {
+        e.preventDefault();
+        setFormSubmitted(true);
+      };
+
+      const handleDirectWhatsApp = () => {
+        const text = encodeURIComponent(
+          `Halo Putri Hayyufi Sa'adah, saya ${contactForm.name || 'rekan'}.\n\nSubjek: ${contactForm.subject || 'Diskusi Portofolio / Kerjasama'}\n\nPesan: ${contactForm.message || 'Saya ingin berdiskusi mengenai proyek kolaborasi bisnis digital.'}`
+        );
+        window.open(`https://wa.me/${personalInfo.contact.whatsappNumber}?text=${text}`, '_blank');
+      };
+
+      return (
+        <div className="min-h-screen bg-cream-100 text-dusty-950 flex flex-col relative font-sans">
+          
+          {/* 1. NAVBAR */}
+          <header className="fixed top-0 left-0 right-0 z-50 bg-cream-100/90 backdrop-blur-md border-b border-dusty-200/60 py-3.5 shadow-sm">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+              
+              <a href="#home" className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-dusty-400 via-dusty-300 to-dusty-200 flex items-center justify-center text-cream-100 font-serif font-bold text-lg shadow-sm">
+                  P
+                </div>
+                <div>
+                  <span className="font-serif text-lg font-bold tracking-wide text-dusty-950">
+                    Putri Hayyufi
+                  </span>
+                  <span className="block text-[11px] font-medium text-dusty-600 uppercase tracking-wider">
+                    Bisnis Digital UNILAK
+                  </span>
+                </div>
+              </a>
+
+              {/* Desktop Nav */}
+              <nav className="hidden lg:flex items-center space-x-1 bg-white/80 px-4 py-1.5 rounded-full border border-dusty-200/70 shadow-xs">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-dusty-700 hover:text-dusty-950 hover:bg-dusty-100 transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </nav>
+
+              <div className="hidden sm:flex items-center space-x-3">
+                <a
+                  href="#contact"
+                  className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-dusty-700 hover:bg-dusty-800 text-cream-100 shadow-sm transition-all"
+                >
+                  Hubungi
+                </a>
+              </div>
+
+              {/* Hamburger Button */}
+              <div className="lg:hidden flex items-center">
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="p-2 rounded-xl text-dusty-700 hover:bg-dusty-100 focus:outline-none"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+
+            {/* Mobile Drawer */}
+            {mobileMenuOpen && (
+              <div className="lg:hidden bg-cream-100 border-b border-dusty-200 px-6 py-4 space-y-2">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-3 py-2 rounded-xl text-xs font-semibold text-dusty-800 hover:bg-dusty-200"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+            )}
+          </header>
+
+          {/* 2. HERO SECTION */}
+          <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-28 relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div className="lg:col-span-7 text-center lg:text-left space-y-6">
+                  
+                  {/* Badges */}
+                  <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 px-4 py-1.5 rounded-full bg-dusty-100 border border-dusty-200 text-dusty-800 text-xs font-semibold uppercase tracking-wider shadow-xs">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>{personalInfo.status}</span>
+                    <span>•</span>
+                    <span>{personalInfo.major}</span>
+                    <span>•</span>
+                    <span className="text-dusty-950 font-bold">🎓 Beasiswa ADik</span>
+                  </div>
+
+                  <div className="space-y-2">
+                    <span className="text-xs sm:text-sm font-semibold tracking-widest text-dusty-600 uppercase block">
+                      Welcome to My Portfolio
+                    </span>
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-dusty-950 leading-tight">
+                      Hi, I'm <span className="text-gradient-luxury">{personalInfo.name}</span>
+                    </h1>
+                    <p className="text-lg font-medium text-dusty-700">
+                      {personalInfo.title}
+                    </p>
+                  </div>
+
+                  <p className="text-sm sm:text-base text-dusty-800 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    {personalInfo.heroBio}
+                  </p>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+                    <a
+                      href="#projects"
+                      className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-dusty-700 hover:bg-dusty-800 text-cream-100 font-semibold text-xs tracking-wider uppercase shadow-soft-luxury hover:shadow-luxury-hover transition-all text-center"
+                    >
+                      Explore My Portfolio ↓
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => setIsCVModalOpen(true)}
+                      className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-dusty-100 border border-dusty-300 text-dusty-800 font-semibold text-xs tracking-wider uppercase shadow-xs transition-all flex items-center justify-center space-x-1.5"
+                    >
+                      <span>Download CV</span>
+                    </button>
+                  </div>
+
+                  {/* Social & School info */}
+                  <div className="pt-4 border-t border-dusty-200/70 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                    <span className="text-xs font-bold text-dusty-600 uppercase">Connect:</span>
+                    <a
+                      href={personalInfo.contact.instagramLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-9 h-9 rounded-full bg-white hover:bg-dusty-200 border border-dusty-200 flex items-center justify-center text-dusty-700 transition-all shadow-xs"
+                    >
+                      <InstagramIcon className="w-4 h-4" />
+                    </a>
+                    <a
+                      href={personalInfo.contact.whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-9 h-9 rounded-full bg-white hover:bg-dusty-200 border border-dusty-200 flex items-center justify-center text-dusty-700 hover:text-emerald-700 transition-all shadow-xs"
+                    >
+                      <WhatsAppIcon className="w-4 h-4" />
+                    </a>
+                    <span className="text-xs text-dusty-600 px-3 py-1 bg-dusty-100/70 rounded-full border border-dusty-200">
+                      Alumni: <strong>{personalInfo.highSchool}</strong>
+                    </span>
+                  </div>
+
+                </div>
+
+                {/* Right Portrait */}
+                <div className="lg:col-span-5 flex justify-center">
+                  <div className="relative w-72 sm:w-80 aspect-[3/4]">
+                    <div className="absolute inset-0 rounded-[45px] bg-gradient-to-tr from-dusty-300 via-dusty-200 to-cream-100 rotate-3 shadow-soft-luxury"></div>
+                    <div className="relative h-full w-full rounded-[42px] overflow-hidden bg-dusty-100 border-4 border-white shadow-xl">
+                      <img src={personalInfo.avatarUrl} alt={personalInfo.name} style={{ objectPosition: 'center 62%' }} className="w-full h-full object-cover" />
+                      <div className="absolute bottom-4 left-4 right-4 text-center">
+                        <span className="px-3.5 py-1 rounded-full bg-cream-100/90 backdrop-blur-md text-[11px] font-bold text-dusty-900 uppercase tracking-wider shadow-xs">
+                          Putri Hayyufi Sa'adah
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          {/* 3. ABOUT ME */}
+          <section id="about" className="py-20 bg-white/70">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-2xl mx-auto mb-14">
+                <span className="px-3.5 py-1 rounded-full bg-dusty-100 border border-dusty-200 text-dusty-700 text-xs font-bold uppercase tracking-wider">
+                  Tentang Saya
+                </span>
+                <h2 className="text-3xl font-serif font-bold text-dusty-950 mt-2">
+                  Mengenal Lebih Dekat
+                </h2>
+                <div className="w-16 h-1 bg-dusty-300 mx-auto mt-3 rounded-full"></div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div className="lg:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-[36px] overflow-hidden shadow-soft-luxury border-4 border-white">
+                    <img src={personalInfo.aboutPhotoUrl} alt="Tentang Putri" style={{ objectPosition: 'center 62%' }} className="w-full h-full object-cover" />
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dusty-950/80 p-6 text-white">
+                      <p className="text-xs uppercase tracking-wider text-dusty-200">Undergraduate Scholar</p>
+                      <h3 className="text-xl font-serif font-bold">{personalInfo.name}</h3>
+                      <p className="text-xs text-dusty-100">{personalInfo.faculty} — {personalInfo.university}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-7 space-y-6">
+                  <h3 className="text-2xl font-serif font-bold text-dusty-950">
+                    Mahasiswa Bisnis Digital & Penerima Beasiswa ADik
+                  </h3>
+
+                  <div className="space-y-3 text-sm text-dusty-800 leading-relaxed">
+                    {personalInfo.aboutDescription.map((p, idx) => (
+                      <p key={idx}>{p}</p>
+                    ))}
+                  </div>
+
+                  {/* Fact Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    <div className="p-3.5 rounded-2xl bg-cream-100 border border-dusty-200 text-xs">
+                      <p className="text-dusty-500 uppercase font-bold text-[10px]">Status Akademik</p>
+                      <p className="font-bold text-dusty-900 mt-0.5">{personalInfo.status} (Bisnis Digital)</p>
+                    </div>
+                    <div className="p-3.5 rounded-2xl bg-cream-100 border border-dusty-200 text-xs">
+                      <p className="text-dusty-500 uppercase font-bold text-[10px]">Perguruan Tinggi</p>
+                      <p className="font-bold text-dusty-900 mt-0.5">{personalInfo.university}</p>
+                    </div>
+                    <div className="p-3.5 rounded-2xl bg-cream-100 border border-dusty-200 text-xs">
+                      <p className="text-dusty-500 uppercase font-bold text-[10px]">Asal Sekolah</p>
+                      <p className="font-bold text-dusty-900 mt-0.5">{personalInfo.highSchool}</p>
+                    </div>
+                    <div className="p-3.5 rounded-2xl bg-cream-100 border border-dusty-200 text-xs">
+                      <p className="text-dusty-500 uppercase font-bold text-[10px]">Beasiswa</p>
+                      <p className="font-bold text-dusty-900 mt-0.5">Penerima Beasiswa ADik Nasional</p>
+                    </div>
+                  </div>
+
+                  {/* Interests */}
+                  <div className="pt-2">
+                    <p className="text-xs font-bold uppercase tracking-wider text-dusty-700 mb-2">
+                      Bidang Minat Utama:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {personalInfo.interests.map((int, i) => (
+                        <span key={i} className="px-3 py-1 rounded-full text-xs font-medium bg-dusty-100 text-dusty-800 border border-dusty-200">
+                          ✓ {int}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          {/* 4. EDUCATION TIMELINE */}
+          <section id="education" className="py-20 bg-cream-100">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-2xl mx-auto mb-14">
+                <span className="px-3.5 py-1 rounded-full bg-dusty-100 border border-dusty-200 text-dusty-700 text-xs font-bold uppercase tracking-wider">
+                  Riwayat Studi
+                </span>
+                <h2 className="text-3xl font-serif font-bold text-dusty-950 mt-2">
+                  Riwayat Pendidikan
+                </h2>
+                <div className="w-16 h-1 bg-dusty-300 mx-auto mt-3 rounded-full"></div>
+              </div>
+
+              <div className="space-y-8">
+                {educationHistory.map((edu, idx) => (
+                  <div key={idx} className="p-7 rounded-3xl bg-white border border-dusty-200 shadow-soft-luxury">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${edu.isActive ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-dusty-100 text-dusty-700'}`}>
+                        {edu.status}
+                      </span>
+                      <span className="text-xs text-dusty-600 font-semibold">{edu.period}</span>
+                    </div>
+
+                    <h3 className="text-xl font-serif font-bold text-dusty-950">{edu.institution}</h3>
+                    <p className="text-xs font-semibold text-dusty-700 mt-1">{edu.major} — {edu.faculty}</p>
+                    <p className="text-xs sm:text-sm text-dusty-700 leading-relaxed mt-3">{edu.description}</p>
+
+                    <div className="mt-4 pt-3 border-t border-dusty-100 space-y-1">
+                      {edu.highlights.map((h, hIdx) => (
+                        <p key={hIdx} className="text-xs text-dusty-600 flex items-center space-x-1.5">
+                          <span className="text-dusty-500 font-bold">•</span>
+                          <span>{h}</span>
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+
+          {/* 5. SKILLS */}
+          <section id="skills" className="py-20 bg-white/70">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-2xl mx-auto mb-14">
+                <span className="px-3.5 py-1 rounded-full bg-dusty-100 border border-dusty-200 text-dusty-700 text-xs font-bold uppercase tracking-wider">
+                  Keahlian
+                </span>
+                <h2 className="text-3xl font-serif font-bold text-dusty-950 mt-2">
+                  My Skills & Competencies
+                </h2>
+                <div className="w-16 h-1 bg-dusty-300 mx-auto mt-3 rounded-full"></div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {skillsData.map((s, idx) => (
+                  <div key={idx} className="p-6 rounded-3xl bg-white border border-dusty-200 shadow-soft-luxury flex flex-col justify-between">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-cream-100 text-dusty-600 border border-dusty-200">
+                        {s.category}
+                      </span>
+                      <h3 className="text-base font-serif font-bold text-dusty-950 mt-3 mb-1">{s.name}</h3>
+                      <p className="text-xs text-dusty-700 leading-relaxed mb-4">{s.description}</p>
+                    </div>
+
+                    <div>
+                      <div className="flex justify-between text-xs mb-1.5">
+                        <span className="text-dusty-500 font-semibold text-[11px]">{s.level}</span>
+                        <span className="font-bold text-dusty-900">{s.percentage}%</span>
+                      </div>
+                      <div className="w-full h-2 rounded-full bg-dusty-100 overflow-hidden">
+                        <div className="h-full rounded-full bg-gradient-to-r from-dusty-300 to-dusty-700" style={{ width: `${s.percentage}%` }}></div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-1 mt-3">
+                        {s.tools.map((t, tI) => (
+                          <span key={tI} className="text-[10px] px-2 py-0.5 rounded bg-cream-100 text-dusty-700 border border-dusty-200/50">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+
+          {/* 6. EXPERIENCE */}
+          <section id="experience" className="py-20 bg-cream-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-2xl mx-auto mb-14">
+                <span className="px-3.5 py-1 rounded-full bg-dusty-100 border border-dusty-200 text-dusty-700 text-xs font-bold uppercase tracking-wider">
+                  Pengalaman
+                </span>
+                <h2 className="text-3xl font-serif font-bold text-dusty-950 mt-2">
+                  Work & Creative Experience
+                </h2>
+                <div className="w-16 h-1 bg-dusty-300 mx-auto mt-3 rounded-full"></div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {experienceData.map((exp, idx) => (
+                  <div key={idx} className="p-7 sm:p-8 rounded-3xl bg-white border border-dusty-200 shadow-soft-luxury flex flex-col justify-between">
+                    <div>
+                      <div className="flex justify-between items-start mb-3">
+                        <div>
+                          <span className="text-[10px] uppercase font-bold text-dusty-500">{exp.type}</span>
+                          <h4 className="text-xs font-bold text-dusty-700">{exp.organization}</h4>
+                        </div>
+                        <span className="text-xs px-2.5 py-1 rounded-full bg-cream-100 text-dusty-600 font-semibold">
+                          {exp.period}
+                        </span>
+                      </div>
+
+                      <h3 className="text-xl font-serif font-bold text-dusty-950 mb-2">{exp.role}</h3>
+                      <p className="text-xs sm:text-sm text-dusty-700 leading-relaxed mb-4">{exp.description}</p>
+
+                      <div className="space-y-1.5 pt-3 border-t border-dusty-100">
+                        {exp.responsibilities.map((r, rI) => (
+                          <p key={rI} className="text-xs text-dusty-700 flex items-start space-x-1.5">
+                            <span className="text-dusty-500 font-bold">✓</span>
+                            <span>{r}</span>
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-4 mt-4 border-t border-dusty-100 flex flex-wrap gap-1.5">
+                      {exp.tools.map((t, tI) => (
+                        <span key={tI} className="text-[10px] px-2.5 py-0.5 rounded-full bg-dusty-100 text-dusty-700 font-medium">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+
+          {/* 7. PROJECTS GALLERY */}
+          <section id="projects" className="py-20 bg-white/70">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-2xl mx-auto mb-10">
+                <span className="px-3.5 py-1 rounded-full bg-dusty-100 border border-dusty-200 text-dusty-700 text-xs font-bold uppercase tracking-wider">
+                  Karya & Portofolio
+                </span>
+                <h2 className="text-3xl font-serif font-bold text-dusty-950 mt-2">
+                  My Creative Projects
+                </h2>
+                <div className="w-16 h-1 bg-dusty-300 mx-auto mt-3 rounded-full"></div>
+              </div>
+
+              {/* Filters */}
+              <div className="flex flex-wrap justify-center gap-2 mb-10">
+                {["Semua", "Social Media", "Graphic Design", "Canva Design", "Video Editing", "Digital Business"].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                      activeCategory === cat ? 'bg-dusty-700 text-cream-100 shadow-md' : 'bg-white text-dusty-700 border border-dusty-200 hover:bg-dusty-100'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProjects.map((p) => (
+                  <div key={p.id} className="rounded-3xl bg-white border border-dusty-200 shadow-soft-luxury overflow-hidden flex flex-col justify-between">
+                    <div>
+                      <div className="relative aspect-[16/10] overflow-hidden bg-dusty-100">
+                        <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
+                        <span className="absolute top-3 left-3 px-3 py-0.5 rounded-full bg-white/90 text-[10px] font-bold text-dusty-800 uppercase">
+                          {p.category}
+                        </span>
+                      </div>
+                      <div className="p-6">
+                        <p className="text-[10px] font-bold uppercase text-dusty-500 mb-1">{p.subtitle}</p>
+                        <h3 className="text-lg font-serif font-bold text-dusty-950 mb-2">{p.title}</h3>
+                        <p className="text-xs text-dusty-700 leading-relaxed mb-4">{p.description}</p>
+                        <div className="flex flex-wrap gap-1">
+                          {p.tools.map((t, ti) => (
+                            <span key={ti} className="text-[10px] px-2 py-0.5 bg-cream-100 rounded text-dusty-600 border border-dusty-200/50">
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="px-6 pb-6 pt-2">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProject(p)}
+                        className="w-full py-2.5 rounded-xl bg-dusty-100 hover:bg-dusty-700 text-dusty-800 hover:text-cream-100 text-xs font-semibold transition-colors"
+                      >
+                        View Project →
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+
+          {/* 8. ACHIEVEMENTS & BEASISWA ADIK */}
+          <section id="certificates" className="py-20 bg-cream-100">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-2xl mx-auto mb-14">
+                <span className="px-3.5 py-1 rounded-full bg-dusty-100 border border-dusty-200 text-dusty-700 text-xs font-bold uppercase tracking-wider">
+                  Pencapaian & Beasiswa
+                </span>
+                <h2 className="text-3xl font-serif font-bold text-dusty-950 mt-2">
+                  Scholarships & Achievements
+                </h2>
+                <div className="w-16 h-1 bg-dusty-300 mx-auto mt-3 rounded-full"></div>
+              </div>
+
+              {/* Main Featured Card: Penerima Beasiswa ADik */}
+              <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-white via-cream-100 to-dusty-100/70 border-2 border-dusty-300 shadow-soft-luxury mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  
+                  <div className="lg:col-span-7 space-y-4">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="px-3.5 py-1 rounded-full bg-dusty-700 text-cream-100 text-xs font-bold uppercase tracking-wider">
+                        ★ Official Scholarship Awardee
+                      </span>
+                      <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold">
+                        Kemendikbudristek RI
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl sm:text-3xl font-serif font-bold text-dusty-950">
+                      Penerima Beasiswa ADik (Afirmasi Pendidikan Tinggi)
+                    </h3>
+
+                    <p className="text-xs font-semibold text-dusty-700">
+                      Puslapdik Kemendikbudristek RI & Universitas Lancang Kuning
+                    </p>
+
+                    <p className="text-xs sm:text-sm text-dusty-700 leading-relaxed">
+                      Terpilih sebagai mahasiswa penerima Beasiswa Afirmasi Pendidikan Tinggi (ADik) dari Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia untuk menempuh program studi S1 Bisnis Digital di Fakultas Ilmu Komputer, Universitas Lancang Kuning.
+                    </p>
+
+                    <div className="space-y-1 pt-2">
+                      <p className="text-xs text-dusty-800">✓ Program Beasiswa Afirmasi Nasional Kemendikbudristek RI</p>
+                      <p className="text-xs text-dusty-800">✓ Studi Sarjana Bisnis Digital Universitas Lancang Kuning</p>
+                      <p className="text-xs text-dusty-800">✓ Alumni MA Baburohmah Meranti (Kepulauan Meranti, Riau)</p>
+                    </div>
+
+                    <div className="pt-3">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedAchievement(achievementsData[0])}
+                        className="px-6 py-2.5 rounded-full bg-dusty-700 hover:bg-dusty-800 text-cream-100 text-xs font-semibold shadow-sm transition-colors"
+                      >
+                        Lihat Detail Penghargaan
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-5 flex justify-center">
+                    <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-md border-4 border-white bg-dusty-100">
+                      <img src={achievementsData[0].image} alt="Beasiswa ADik" className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-4">
+                        <span className="text-white text-xs font-bold">Beasiswa ADik Kemendikbudristek RI</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          {/* 9. CONTACT */}
+          <section id="contact" className="py-20 bg-white/70">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-2xl mx-auto mb-14">
+                <span className="px-3.5 py-1 rounded-full bg-dusty-100 border border-dusty-200 text-dusty-700 text-xs font-bold uppercase tracking-wider">
+                  Kontak
+                </span>
+                <h2 className="text-3xl font-serif font-bold text-dusty-950 mt-2">
+                  Hubungi Saya
+                </h2>
+                <div className="w-16 h-1 bg-dusty-300 mx-auto mt-3 rounded-full"></div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                {/* Contact Info Cards */}
+                <div className="lg:col-span-5 space-y-4">
+                  <div className="p-8 rounded-3xl bg-cream-100 border border-dusty-200 shadow-soft-luxury space-y-4">
+                    <h3 className="text-xl font-serif font-bold text-dusty-950">Informasi Kontak</h3>
+                    <p className="text-xs sm:text-sm text-dusty-700 leading-relaxed">
+                      Silakan hubungi saya untuk diskusi tugas, peluang kolaborasi, atau manajemen media sosial.
+                    </p>
+
+                    <div className="space-y-3 pt-2">
+                      <div className="p-3.5 rounded-2xl bg-white border border-dusty-200 flex items-center justify-between">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase text-dusty-500">WhatsApp</p>
+                          <p className="text-xs font-semibold text-dusty-900">{personalInfo.contact.whatsappDisplay}</p>
+                        </div>
+                        <a href={personalInfo.contact.whatsappLink} target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-xs font-bold hover:bg-emerald-100">
+                          Chat WA
+                        </a>
+                      </div>
+
+                      <div className="p-3.5 rounded-2xl bg-white border border-dusty-200 flex items-center justify-between">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase text-dusty-500">Instagram</p>
+                          <p className="text-xs font-semibold text-dusty-900">{personalInfo.contact.instagramHandle}</p>
+                        </div>
+                        <a href={personalInfo.contact.instagramLink} target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-dusty-100 text-dusty-800 rounded-lg text-xs font-bold hover:bg-dusty-200">
+                          Buka IG
+                        </a>
+                      </div>
+
+                      <div className="p-3.5 rounded-2xl bg-white border border-dusty-200">
+                        <p className="text-[10px] font-bold uppercase text-dusty-500">Email</p>
+                        <p className="text-xs font-semibold text-dusty-900">{personalInfo.contact.emailAddress}</p>
+                      </div>
+
+                      <div className="p-3.5 rounded-2xl bg-white border border-dusty-200">
+                        <p className="text-[10px] font-bold uppercase text-dusty-500">Domisili</p>
+                        <p className="text-xs font-semibold text-dusty-900">{personalInfo.contact.location}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Form */}
+                <div className="lg:col-span-7">
+                  <div className="p-8 sm:p-10 rounded-3xl bg-white border border-dusty-200 shadow-soft-luxury">
+                    <h3 className="text-2xl font-serif font-bold text-dusty-950 mb-4">Kirim Pesan</h3>
+
+                    {formSubmitted && (
+                      <div className="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs space-y-2">
+                        <p className="font-bold">✓ Pesan berhasil disimulasikan terkirim!</p>
+                        <p>Anda juga dapat meneruskan pesan ini langsung ke nomor WhatsApp.</p>
+                        <button
+                          type="button"
+                          onClick={handleDirectWhatsApp}
+                          className="px-4 py-2 bg-emerald-700 text-white rounded-xl font-bold"
+                        >
+                          Kirim Langsung via WhatsApp Sekarang
+                        </button>
+                      </div>
+                    )}
+
+                    <form onSubmit={handleFormSubmit} className="space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-bold uppercase text-dusty-700 mb-1">Nama Lengkap</label>
+                          <input
+                            type="text"
+                            required
+                            value={contactForm.name}
+                            onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                            placeholder="Nama Anda"
+                            className="w-full px-4 py-2.5 rounded-xl bg-cream-100 border border-dusty-200 text-sm focus:outline-none focus:ring-2 focus:ring-dusty-400"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold uppercase text-dusty-700 mb-1">Email</label>
+                          <input
+                            type="email"
+                            required
+                            value={contactForm.email}
+                            onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                            placeholder="nama@email.com"
+                            className="w-full px-4 py-2.5 rounded-xl bg-cream-100 border border-dusty-200 text-sm focus:outline-none focus:ring-2 focus:ring-dusty-400"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold uppercase text-dusty-700 mb-1">Subject</label>
+                        <input
+                          type="text"
+                          required
+                          value={contactForm.subject}
+                          onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
+                          placeholder="Perihal Pesan"
+                          className="w-full px-4 py-2.5 rounded-xl bg-cream-100 border border-dusty-200 text-sm focus:outline-none focus:ring-2 focus:ring-dusty-400"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold uppercase text-dusty-700 mb-1">Pesan (Message)</label>
+                        <textarea
+                          rows="4"
+                          required
+                          value={contactForm.message}
+                          onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                          placeholder="Tuliskan pesan Anda..."
+                          className="w-full px-4 py-2.5 rounded-xl bg-cream-100 border border-dusty-200 text-sm focus:outline-none focus:ring-2 focus:ring-dusty-400 resize-none"
+                        ></textarea>
+                      </div>
+
+                      <button
+                        type="submit"
+                        className="w-full py-3.5 rounded-xl bg-dusty-700 hover:bg-dusty-800 text-cream-100 font-bold text-xs uppercase tracking-wider shadow-md transition-colors"
+                      >
+                        Send Message
+                      </button>
+                    </form>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* 10. FOOTER */}
+          <footer className="bg-gradient-to-b from-white to-dusty-100 border-t border-dusty-200 py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+              
+              <div className="flex items-center justify-center space-x-2">
+                <div className="w-8 h-8 rounded-full bg-dusty-700 text-cream-100 font-serif font-bold text-sm flex items-center justify-center">
+                  P
+                </div>
+                <span className="font-serif font-bold text-base text-dusty-950">
+                  {personalInfo.name}
+                </span>
+              </div>
+
+              <p className="text-xs text-dusty-700">
+                {personalInfo.major} • {personalInfo.faculty} — {personalInfo.university}
+              </p>
+
+              <div className="flex justify-center space-x-4 pt-2">
+                <a href={personalInfo.contact.instagramLink} target="_blank" rel="noopener noreferrer" className="text-xs text-dusty-700 hover:text-dusty-950">Instagram</a>
+                <span>•</span>
+                <a href={personalInfo.contact.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-xs text-dusty-700 hover:text-emerald-700">WhatsApp</a>
+              </div>
+
+              <div className="pt-4 border-t border-dusty-200">
+                <p className="font-serif italic text-sm text-dusty-900">
+                  Designed with creativity by <strong>Putri Hayyufi Sa'adah</strong>
+                </p>
+                <p className="text-[11px] text-dusty-500 mt-1">
+                  © 2026 Putri Hayyufi Sa'adah. All rights reserved.
+                </p>
+              </div>
+
+            </div>
+          </footer>
+
+          {/* PROJECT DETAIL MODAL */}
+          {selectedProject && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+              <div className="relative w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xl">
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-dusty-100 text-dusty-700 flex items-center justify-center font-bold"
+                >
+                  ✕
+                </button>
+                <div className="aspect-video w-full rounded-2xl overflow-hidden bg-dusty-100">
+                  <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
+                </div>
+                <span className="px-3 py-1 bg-dusty-100 text-dusty-800 text-xs font-bold rounded-full">{selectedProject.category}</span>
+                <h3 className="text-xl font-serif font-bold text-dusty-950">{selectedProject.title}</h3>
+                <p className="text-xs sm:text-sm text-dusty-700 leading-relaxed">{selectedProject.description}</p>
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="px-5 py-2 rounded-full bg-dusty-700 text-cream-100 text-xs font-bold"
+                  >
+                    Tutup Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* SCHOLARSHIP MODAL */}
+          {selectedAchievement && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+              <div className="relative w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xl">
+                <button
+                  onClick={() => setSelectedAchievement(null)}
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-dusty-100 text-dusty-700 flex items-center justify-center font-bold"
+                >
+                  ✕
+                </button>
+                <span className="px-3 py-1 bg-dusty-700 text-cream-100 text-xs font-bold rounded-full">★ {selectedAchievement.badge}</span>
+                <h3 className="text-xl font-serif font-bold text-dusty-950">{selectedAchievement.title}</h3>
+                <p className="text-xs text-dusty-600 font-semibold">{selectedAchievement.organizer}</p>
+                <p className="text-xs sm:text-sm text-dusty-700 leading-relaxed">{selectedAchievement.description}</p>
+                <div className="p-4 rounded-xl bg-cream-100 border border-dusty-200 text-xs space-y-1">
+                  {selectedAchievement.highlights.map((h, i) => (
+                    <p key={i} className="text-dusty-800">✓ {h}</p>
+                  ))}
+                </div>
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={() => setSelectedAchievement(null)}
+                    className="px-5 py-2 rounded-full bg-dusty-700 text-cream-100 text-xs font-bold"
+                  >
+                    Tutup
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* CV PREVIEW & PRINT MODAL */}
+          {isCVModalOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+              <div className="relative w-full max-w-3xl bg-white rounded-3xl p-6 sm:p-10 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+                <div className="flex justify-between items-center border-b pb-4">
+                  <div>
+                    <h2 className="text-2xl font-serif font-bold text-dusty-950">{personalInfo.name}</h2>
+                    <p className="text-xs font-bold text-dusty-600 uppercase tracking-wider">{personalInfo.title} • {personalInfo.scholarship}</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => window.print()}
+                      className="px-4 py-1.5 bg-dusty-700 text-cream-100 rounded-full text-xs font-bold"
+                    >
+                      Cetak / PDF
+                    </button>
+                    <button
+                      onClick={() => setIsCVModalOpen(false)}
+                      className="w-8 h-8 rounded-full bg-dusty-100 text-dusty-700 font-bold"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-4 text-xs sm:text-sm text-dusty-800 leading-relaxed">
+                  <div>
+                    <h4 className="font-bold text-dusty-950 uppercase text-xs mb-1">Ringkasan Profil</h4>
+                    <p>{personalInfo.heroBio}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-dusty-950 uppercase text-xs mb-1">Riwayat Pendidikan</h4>
+                    <p>• <strong>{educationHistory[0].institution}</strong> — {educationHistory[0].major} ({educationHistory[0].status})</p>
+                    <p>• <strong>{educationHistory[1].institution}</strong> — {educationHistory[1].status}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-dusty-950 uppercase text-xs mb-1">Penghargaan</h4>
+                    <p>• <strong>Penerima Beasiswa ADik (Afirmasi Pendidikan Tinggi)</strong> Kemendikbudristek RI</p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-dusty-950 uppercase text-xs mb-1">Kontak Resmi</h4>
+                    <p>WhatsApp: {personalInfo.contact.whatsappDisplay} | Instagram: {personalInfo.contact.instagramHandle}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* BACK TO TOP BUTTON */}
+          {showBackToTop && (
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-dusty-700 text-cream-100 flex items-center justify-center shadow-lg hover:bg-dusty-800 transition-all"
+              aria-label="Back to Top"
+            >
+              ↑
+            </button>
+          )}
+
+        </div>
+      );
+    }
+
+    // Render the React Application
+    const rootElement = document.getElementById('root');
+    ReactDOM.createRoot(rootElement).render(<App />);
+  </script>
+</body>
+</html>
